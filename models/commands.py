@@ -9,14 +9,14 @@ import json
 import datetime
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="../config")
-#import bitcoin
 from models.cryptocurrency.bitcoin import Bitcoin
-#import etherum
+from models.cldr import Calendar
 from models.cryptocurrency.etherum import Etherum
 
 
 class Commands:
     crypto_obj = {'BTC': Bitcoin, 'ETH': Etherum}
+    other_cmd = {'!reunion': Calendar}
 
     def __init__(self, list_messages_send):
         """
@@ -39,6 +39,25 @@ class Commands:
             return True
         return False
 
+    def is_other_cmd(self, cmd):
+        """Check in dictionnary if the cmd given exist"""
+        for key in self.other_cmd.keys():
+            if key == cmd:
+                return True
+        return False
+
+    def msg_other_cmd(self, cmd):
+        """ Return the msg of other cmd for the cmd given"""
+        for key in self.other_cmd.keys():
+            if key == cmd:
+                calendar = self.other_cmd[key]()
+                calendar.launch()
+                str_to_print = calendar.get_all_event()
+                if str_to_print and len(str_to_print) > 0:
+                    return str_to_print
+                else:
+                    return "Pas de réunion de prévu"
+
     def msg_crypto(self):
         for i in self.crypto_obj.keys():
             if i == self.msg_list[0][1:]:
@@ -52,8 +71,8 @@ class Commands:
                 return self.parse_cmd_list(self.msg_list[0])
             elif self.is_cmd_crypto(self.msg_list[0][1:]):
                 return self.msg_crypto()
-            else:
-                return "Inconnu"
+            elif self.is_other_cmd(self.msg_list[0]):
+                return self.msg_other_cmd(self.msg_list[0])
         else:
             return self.error_cmd_msg
 

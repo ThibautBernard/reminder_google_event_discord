@@ -92,6 +92,30 @@ class Calendar:
         self.get_name_event()
         self.get_second_rest_event()
 
+    def get_all_event(self):
+        s = ""
+        date_min = datetime.today()
+        date_min = date_min.replace(hour=8, minute=30)
+        date_min = date_min.isoformat() + 'Z'
+
+        date_max = datetime.today()
+        date_max = date_max.replace(hour=22, minute=30)
+        date_max = date_max.isoformat() + 'Z'
+        events_result = self.service.events().list(
+                                    calendarId='primary', timeMin=date_min, timeMax=date_max,
+                                    singleEvents=True,
+                                    orderBy='startTime').execute()
+        for i in range(len(events_result['items'])):
+            for y in events_result['items'][i]:
+                if y == "summary":
+                    s = s + events_result['items'][i][y] + " à "
+                if y == "start":
+                    format = "%Y-%m-%dT%H:%M:%S%z"
+                    tmp_date = datetime.strptime(events_result['items'][i][y]['dateTime'], format).strftime('%H:%M:%S')
+                    s = s + tmp_date + "\n"
+
+        return s
+
     def get_last_event(self):
         """Call api and store if exist
         the informations about the last event that coming
@@ -103,10 +127,10 @@ class Calendar:
         max_minutes = datetime.utcnow() + timedelta(minutes = 10)
         max_minutes = max_minutes.isoformat() + 'Z'
         events_result = self.service.events().list(
-                                        calendarId='primary', timeMin=now, 
-                                        timeMax=max_minutes, maxResults=2, 
-                                        singleEvents=True,
-                                        orderBy='startTime').execute()
+                                    calendarId='primary', timeMin=now, 
+                                    timeMax=max_minutes, maxResults=2, 
+                                    singleEvents=True,
+                                    orderBy='startTime').execute()
         if events_result:
             tmp = events_result['items']
             if len(tmp) > 0 and tmp:

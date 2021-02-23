@@ -38,8 +38,6 @@ class MyClient(discord.Client):
     
     async def get_calendar_event(self):
         """Call the api calendar and get value from event"""
-        # c = cldr.Calendar()
-
         c = Calendar()
         c.launch()
         self.reunion_date = c.seconds_event
@@ -51,7 +49,7 @@ class MyClient(discord.Client):
         """ Check if the datetime of the event is soon
         if yes, send a msg to the main channel
         and sleep the time of the event to start"""
-        if self.reunion_date and self.reunion_date > 60 and self.reunion_date < 300:
+        if self.reunion_date and self.name_reunion and self.reunion_date > 60 and self.reunion_date < 300:
             await self.send_channel_msg("{} va commencer dans moins de : {} mn".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date)))))
             await asyncio.sleep(self.reunion_date)
         await asyncio.sleep(3)
@@ -83,7 +81,6 @@ class MyClient(discord.Client):
         msg_user_list = message.content.split()
         msg_user = msg_user_list[0]
         if msg_user_list[0][0] == self.identifier_cmd:
-            # cmd = commands.Commands(msg_user_list)
             cmd = Commands(msg_user_list)
             await message.channel.send(cmd.message_to_respond())
 
