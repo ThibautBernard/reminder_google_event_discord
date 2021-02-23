@@ -1,0 +1,6 @@
+TOKEN={token_discord}
+COMMANDS=["!dormir", "!help", "!reveille", "!say", "!BTC", "!ETH", "!reunion"]
+MSG_RESPONDS=["Oui papa", "Google.com"]
+CRYPTO=["ETH", "BTC"]
+IMP_MEETINGS=["[VCFR] Wrap-up", "[VCFR] Check-in"]
+MSG_BOT_START="Hello, everyone i\'m the bot of this discord"
