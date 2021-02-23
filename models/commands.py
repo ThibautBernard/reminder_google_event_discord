@@ -26,6 +26,7 @@ class Commands:
         self.commands = json.loads(os.getenv("COMMANDS"))
         self.msg_to_respond = json.loads(os.getenv("MSG_RESPONDS"))
         self.list_cmd_crypto = json.loads(os.getenv("CRYPTO"))
+        self.error_cmd_msg = os.getenv("ERROR_COMMANDS")
 
     def parse_cmd_list(self, to_find):
         """ Parse the list to return the msg to the cmd """
@@ -54,7 +55,7 @@ class Commands:
             else:
                 return "Inconnu"
         else:
-            return f"Wrong cmd, the list of the commands: \n {self.commands}"
+            return self.error_cmd_msg
 
     def is_command(self, cmd_to_check):
         """ Check that command send is in the list """

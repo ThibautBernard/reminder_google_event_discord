@@ -1,6 +1,16 @@
-TOKEN={token_discord}
+TOKEN=token_discord
 COMMANDS=["!dormir", "!help", "!reveille", "!say", "!BTC", "!ETH", "!reunion"]
 MSG_RESPONDS=["Oui papa", "Google.com"]
 CRYPTO=["ETH", "BTC"]
 IMP_MEETINGS=["[VCFR] Wrap-up", "[VCFR] Check-in"]
 MSG_BOT_START="Hello, everyone i\'m the bot of this discord"
+ERROR_COMMANDS="
+Voici les commandes disponibles : 
+!dormir : le bot s'endort
+!help : help commande
+!reveille : le bot se reveille
+!say : le bot dit quelque chose
+!BTC : affiche le prix du bitcoin (a 1h près)
+!ETH : affiche le prix de l'etherum (a 1h près)
+!reunion : affiche les réunions de la journée
+"
