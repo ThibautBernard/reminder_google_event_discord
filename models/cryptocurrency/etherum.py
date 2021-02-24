@@ -8,4 +8,4 @@ class Etherum(Crypto):
 
     def message_price(self):
         self.get_price()
-        return f"Le prix actuel de l'etherum est de {self.price} {self.currency} ({self.hours})"
+        return f"Le prix de l'etherum est de {self.price} {self.currency} ({self.hours})"

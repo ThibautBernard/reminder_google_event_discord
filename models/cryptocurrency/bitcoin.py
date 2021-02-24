@@ -6,4 +6,4 @@ class Bitcoin(Crypto):
 
     def message_price(self):
         self.get_price()
-        return f"Le prix actuel du bitcoin est de {self.price} {self.currency} ({self.hours})"
+        return f"Le prix du bitcoin est de {self.price} {self.currency} ({self.hours})"
