@@ -12,10 +12,11 @@ load_dotenv(dotenv_path="../config")
 from models.cryptocurrency.bitcoin import Bitcoin
 from models.cldr import Calendar
 from models.cryptocurrency.etherum import Etherum
-
+from models.cryptocurrency.cro import Cro
+from models.cryptocurrency.doge import Doge
 
 class Commands:
-    crypto_obj = {'BTC': Bitcoin, 'ETH': Etherum}
+    crypto_obj = {'BTC': Bitcoin, 'ETH': Etherum, 'CRO': Cro, 'DOGE': Doge}
     other_cmd = {'!reunion': Calendar}
 
     def __init__(self, list_messages_send):

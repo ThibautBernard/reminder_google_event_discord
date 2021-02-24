@@ -42,10 +42,11 @@ class Crypto:
         Check if the crypto wanted is
         in the list of currency avalaible
         If yes, assigne the value
+        [1:] = slice the ! of the command
         """
         crypto_list = json.loads(os.getenv("CRYPTO"))
-        if value[1:4] in crypto_list:
-            self.__crypto_name = value[1:4]
+        if value[1:] in crypto_list:
+            self.__crypto_name = value[1:]
         else:
             return None
 
