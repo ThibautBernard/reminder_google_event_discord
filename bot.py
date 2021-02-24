@@ -23,6 +23,8 @@ from time import strftime
 class MyClient(discord.Client):
     identifier_cmd = "!"
     id_main_channel = 807629531812462656
+    #807629531812462656
+    #holberton = 756427182162706486
     def __init__(self):
         super().__init__()
         self.main_channel = None
@@ -50,15 +52,19 @@ class MyClient(discord.Client):
         if yes, send a msg to the main channel
         and sleep the time of the event to start"""
         if self.reunion_date and self.name_reunion and self.reunion_date > 60 and self.reunion_date < 300:
-            await self.send_channel_msg("{} va commencer dans moins de : {} mn".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date)))))
+            await self.send_channel_msg("{} va commencer dans moins de : {}".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date)))))
             await asyncio.sleep(self.reunion_date)
+        elif self.reunion_date and self.name_reunion and self.reunion_date >= -60 and self.reunion_date <= 0:
+            await self.send_channel_msg("{} commence actuellement !".format(self.name_reunion))
+            await asyncio.sleep(60)
+
         await asyncio.sleep(3)
 
     async def on_ready(self):
         """ When the bot connect into channel """
         self.main_channel = self.get_channel(self.id_main_channel)
         self.change_status("Working on the api")
-        await self.main_channel.send(self.msg_bot_start)
+        #await self.main_channel.send(self.msg_bot_start)
         await self.change_presence(status=discord.Status.idle, activity=self.activity)
         while True:
             await self.get_calendar_event()
@@ -86,3 +92,4 @@ class MyClient(discord.Client):
 
 b = MyClient()
 b.run(os.getenv("TOKEN"))
+#ODA3NjI4MTQ0MDQ2NjM3MDU2.YB6wUg.rThUCTIjHffaFF3599j0FWgqfB0
