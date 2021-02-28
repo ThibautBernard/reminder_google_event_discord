@@ -1,5 +1,6 @@
 # Discord bot
 # Reminder discord bot meeting zoom
+## send a message with the link when a meeting on google calendar start
 ### :star: Context
 The purpose of this bot was to **create a reminder for event zoom** created in google calendar.
 <br>*Five minutes before the meetings, the bot send a discord message to all that say that the meeting will start soon, pratical to remember.*
