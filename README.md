@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-# Discord bot
-=======
 # Reminder discord bot meeting zoom
+### *Send a message with the link when a meeting on google calendar start*
 ### :star: Context
-The purpose of this bot was to **create a reminder for event zoom** created in google calendar.
-<br>*Five minutes before the meetings, the bot send a discord message to all that say that the meeting will start soon, pratical to remember.*
+The purpose of this bot was to **create a reminder for event (Zoom)** created in google calendar.
+<br>*Five minutes before the meetings, the bot send a discord message to all that say that the meeting will start soon, and send another message when the meeting start with the link of it, pratical to remember.*
 <br>We can show also all the meeting of the current day with one command and print the price of cryptocurrencies(BTC, ETH...).
 
 
@@ -26,4 +24,8 @@ The purpose of this bot was to **create a reminder for event zoom** created in g
 * You finally good, congratz.
 ### :star: Usage 
 * start the bot ``python3 bot.p``
->>>>>>> 9e379810456c2726d298893b415783dbbd22cfc7
+
+### Commands
+* !BTC (print the price of the bitcoin)
+* !{whatever you tipe} (print a list of the current list commands you can use)
+* !reunion (print all the reunion from your google calendar)
