@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # Discord bot
-=======
 # Reminder discord bot meeting zoom
 ### :star: Context
 The purpose of this bot was to **create a reminder for event zoom** created in google calendar.
@@ -26,4 +24,3 @@ The purpose of this bot was to **create a reminder for event zoom** created in g
 * You finally good, congratz.
 ### :star: Usage 
 * start the bot ``python3 bot.p``
->>>>>>> 9e379810456c2726d298893b415783dbbd22cfc7
