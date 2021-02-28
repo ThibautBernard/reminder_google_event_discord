@@ -13,6 +13,7 @@ class Crypto:
     """
     Parent class to all crypto
     """
+    api_key = ""
     def __init__(self, crypto_n, currency):
         """
         crypto_n: name of the crypto wanted
@@ -20,7 +21,7 @@ class Crypto:
         """
         self.currency = currency
         self.crypto_name = crypto_n
-        self.content = requests.get(f"https://api.nomics.com/v1/currencies/ticker?key=017e9266c7648d99c635eff96ebfc725&ids={self.crypto_name}&interval=1d,30d&convert=EUR&per-page=100&page=1")
+        self.content = requests.get(f"https://api.nomics.com/v1/currencies/ticker?key={self.api_key}&ids={self.crypto_name}&interval=1d,30d&convert=EUR&per-page=100&page=1")
         self.price = 0
         self.hours = None
 

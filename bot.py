@@ -11,10 +11,8 @@ import datetime
 import time
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="config")
-#import cldr
 from models.cldr import Calendar
 from models.commands import Commands
-#import commands
 import asyncio
 from time import gmtime
 from time import strftime
@@ -23,7 +21,7 @@ from time import strftime
 class MyClient(discord.Client):
     identifier_cmd = "!"
     id_main_channel = id_of_the_channel
-    
+
     def __init__(self):
         super().__init__()
         self.main_channel = None
