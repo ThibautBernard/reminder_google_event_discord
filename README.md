@@ -24,9 +24,11 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 ##### *Api crypto*
 * 7 - Sign in and get your api key [here](https://api.nomics.com) and save it for after. 
 ##### *Config*
-* 8 - Go in the **config** file and paste the token that you saved from your bot, at the TOKEN={your_token_bot} 
-* 9 - Get the id of the channel you will send the message of your bot, right-click on the channel and copy the ID and paste it in **bot.py** at "id_main_channel = {the_id_of_the_channel}
-* 10 - Open your file in models/cryptocurrencies/crypto.py and paste your api key in *api_key = "your_api_key"*
+* 8 - Open your file **config**  and paste the token that you saved from your bot (*step 4*), at the TOKEN={your_token_bot} 
+* 9 - Open your file **bot.py** and paste the id of the channel at "id_main_channel = {the_id_of_the_channel}
+  * To get the id of a channel, get at your parameters of discord app and give you access developpers
+  * Right-click on a channel and copy the id of this one
+* 10 - Open the file crypto in models/cryptocurrencies/crypto.py and paste your api key in *api_key = "your_api_key"*
 * You finally good, congratz.
 ### :star: Usage 
 * start the bot ``python3 bot.p``
