@@ -42,7 +42,7 @@ class Crypto:
         Check if the crypto wanted is
         in the list of currency avalaible
         If yes, assigne the value
-        [1:] = slice the ! of the command
+        [1:] = slice the ! of the command given
         """
         crypto_list = json.loads(os.getenv("CRYPTO"))
         if value[1:] in crypto_list:

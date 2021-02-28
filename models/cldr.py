@@ -31,7 +31,8 @@ class Calendar:
         self.date_event = None
         self.name_event = None
         self.seconds_event = 0
-        self.import_meetings_list = json.loads(os.getenv("IMP_MEETINGS"))
+        self.link_event = None
+        #self.import_meetings_list = json.loads(os.getenv("IMP_MEETINGS"))
 
     def setup(self):
         """ 
@@ -83,6 +84,8 @@ class Calendar:
         """ Store if an event exist the name of this event"""
         if self.info_event:
             self.name_event = self.info_event['summary']
+            if 'location' in self.info_event:
+                self.link_event = self.info_event['location']
 
     def launch(self):
         """ Call different function needed"""
@@ -136,6 +139,6 @@ class Calendar:
             if len(tmp) > 0 and tmp:
                 if events_result['items'][0]:
                     for i in range(len(events_result['items'])):
-                        if events_result['items'][i]['summary'] in self.import_meetings_list:
-                            print(">{}".format(events_result['items'][i]['summary']))
-                            self.info_event = events_result['items'][i]
+                        #if events_result['items'][i]['summary'] in self.import_meetings_list:
+                        print(">{}".format(events_result['items'][i]['summary']))
+                        self.info_event = events_result['items'][i]
