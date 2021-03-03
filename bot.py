@@ -20,7 +20,7 @@ from time import strftime
 
 class MyClient(discord.Client):
     identifier_cmd = "!"
-    id_main_channel = id_of_the_channel
+    id_main_channel = put_the_id_here
 
     def __init__(self):
         super().__init__()
@@ -52,10 +52,10 @@ class MyClient(discord.Client):
         if yes, send a msg to the main channel
         and sleep the time of the event to start"""
         if self.reunion_date and self.name_reunion and self.reunion_date > 60 and self.reunion_date < 300:
-            await self.send_channel_msg("{} va commencer dans moins de : {}".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date)))))
+            await self.send_channel_msg("{} va commencer dans moins de : {} ({})".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date))), self.link_event))
             await asyncio.sleep(self.reunion_date)
         elif self.reunion_date and self.name_reunion and self.reunion_date >= -60 and self.reunion_date <= 0:
-            await self.send_channel_msg("@everyone {} commence actuellement ! ({})".format(self.name_reunion, self.link_event))
+            await self.send_channel_msg("@everyone {} commence actuellement, c'est l'heure !!".format(self.name_reunion))
             await asyncio.sleep(60)
 
         await asyncio.sleep(3)
