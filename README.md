@@ -16,8 +16,8 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 ##### *Discord part*
 * 1 - Install the library discord api https://github.com/Rapptz/discord.py
 * 2 - Create a new application on https://discord.com/developers/applications
-* 3 - Get on your application that you just register and go on the onglet "Oauth", coche the case "bot" and copy & paste the link in your browser, it will ask you which server you want your application on, so choose the server you want your bot in.
-* 4 - Go on the onglet "bot" and create a bot, **a token will be give to you, save it**
+* 3 - Get on your application that you just registered and get you at the onglet "Oauth", coche the case "bot" and copy & paste the link in your browser, it will ask you which server you want your application on, so choose the server you want your bot in.
+* 4 - Get you at the onglet "bot" and create a bot, **a token will be give to you, save it**
 ##### *Google calendar part*
 * 5 - Do the step one on https://developers.google.com/calendar/quickstart/python and save the credentials in the root project
 * 6 - Enter this command ``pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`` (if you have trouble, find another way to install this library [here](https://developers.google.com/api-client-library/python/start/installation))
@@ -35,5 +35,5 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 
 ### Commands
 * !BTC (print the price of the bitcoin)
-* !{whatever you tipe} (print a list of the current list commands you can use)
+* !{whatever you type} (print a list of the current list commands you can use)
 * !reunion (print all the reunion from your google calendar)
