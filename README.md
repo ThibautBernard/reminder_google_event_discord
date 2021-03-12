@@ -1,8 +1,8 @@
 # Reminder discord bot meeting zoom
-### *Send a message with the link when a meeting on google calendar start*
+### *Send a message in discord channel and @everyone when an event(Zoom meeting) on google calendar will start and started with the link of this event*
 ### :star: Context
 The purpose of this bot was to **create a reminder for event (Zoom)** created in google calendar.
-<br>*Five minutes before the meeting, the bot send a discord message to all that say that the meeting will start soon, and send another message when the meeting start with the link of it, pratical to remember.*
+<br>*Five minutes before the meeting, the bot send a discord message to all that say that the meeting will start soon with the link of this meeting, and send another message when the meeting start, pratical to remember.*
 <br>We can show also all the meeting of the current day with one command and print the price of cryptocurrencies(BTC, ETH...).
 
 ### :star: Used 
@@ -55,3 +55,6 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 * !BTC (print the price of the bitcoin)
 * !{whatever you type} (print a list of the current list commands you can use)
 * !reunion (print all the reunion from your google calendar)
+
+### Contributions
+* If you want to contribute to improve this bot with feature around sending a message when a meeting will start, you just have to create a pull request with the description that you did and i will review it :)
