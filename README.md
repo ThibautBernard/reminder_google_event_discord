@@ -1,4 +1,4 @@
-# Reminder discord bot meeting zoom
+# Reminder discord bot meeting google calendar (zoom)
 ### *Send a message in discord channel and @everyone when an event(Zoom meeting) on google calendar will start and started with the link of this event*
 ### :star: Context
 The purpose of this bot was to **create a reminder for event (Zoom)** created in google calendar.
