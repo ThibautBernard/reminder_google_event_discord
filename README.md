@@ -22,7 +22,7 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 * 5 - Do the step one on https://developers.google.com/calendar/quickstart/python and save the credentials in the root project
 * 6 - Enter this command ``pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`` (if you have trouble, find another way to install this library [here](https://developers.google.com/api-client-library/python/start/installation))
 ##### *Api crypto*
-* 7 - Sign in and get your api key [here](https://api.nomics.com) and save it for after. 
+* 7 - Sign in and get your api key at [here](https://p.nomics.com/pricing#free-plan)(free) and save it for after. 
 ##### *Config*
 * 8 - Open your file [**config**](https://github.com/ThibautBernard/discord_bot/blob/master/config_bot/config) in folder config_bot and paste the token that you saved from your bot (*step 4*), at the TOKEN={your_token_bot} 
 * 9 - Always in config file, paste the id of the channel at "ID_CHANNEL_TO_SEND_REMINDER_MSG = {the_id_of_the_channel}
