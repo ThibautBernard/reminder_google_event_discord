@@ -24,8 +24,8 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 ##### *Api crypto*
 * 7 - Sign in and get your api key [here](https://api.nomics.com) and save it for after. 
 ##### *Config*
-* 8 - Open your file **config**  and paste the token that you saved from your bot (*step 4*), at the TOKEN={your_token_bot} 
-* 9 - Open your file **bot.py** and paste the id of the channel at "id_main_channel = {the_id_of_the_channel}
+* 8 - Open your file [**config**](https://github.com/ThibautBernard/discord_bot/blob/master/config_bot/config) in folder config_bot and paste the token that you saved from your bot (*step 4*), at the TOKEN={your_token_bot} 
+* 9 - Always in config file, paste the id of the channel at "ID_CHANNEL_TO_SEND_REMINDER_MSG = {the_id_of_the_channel}
   * To get the id of a channel, get at your parameters of discord app and give you access developpers
   * Right-click on a channel and copy the id of this one
 * 10 - Open the file crypto in models/cryptocurrencies/crypto.py and paste your api key in *api_key = "your_api_key"*
@@ -39,7 +39,6 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
   * Create a new file in folder *cryptocurrencies*, copy and paste as example the bitcoin.py file and update the class name, the super().__init__("!your_crypto") and update the message return as you want. 
   * To finish, update the commands.py file, import you new file created as ``from models.cryptocurrency.name_file import class_name`` and add you new crypto in the dictionnary 'crypto_obj'.
   
- #### Add a new command
 ### Files
  * config is the config file
     * You can add more crypto
