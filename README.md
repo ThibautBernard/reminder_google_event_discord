@@ -42,7 +42,10 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
   * To finish, update the commands.py file, import you new file created as ``from models.cryptocurrency.name_file import class_name`` and add you new crypto in the dictionnary 'crypto_obj'.
  #### Create a new event in google calendar to test
   * Open https://calendar.google.com and log you in with the account that you use at the step 5
-  * Now create a new event in your calendar and it will give you informations in your console 
+  * Now create a new event in your calendar
+  * Add a new title
+  * Add the link of your zoom meeting in *'add location'*
+  * That's it.
 ### Files
  * bot.py is the main file to start the bot
     * Use asynchronous and listening event from discord API
