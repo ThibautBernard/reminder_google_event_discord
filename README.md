@@ -57,4 +57,4 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 * !reunion (print all the reunion from your google calendar)
 
 ### Contributions
-* If you want to contribute to improve this bot with feature around sending a message when a meeting will start, you just have to create a pull request with the description that you did and i will review it :)
+* If you want to contribute to improve this bot with features around sending a message when a meeting will start, you just have to create a pull request with the description of what you did and i will review it :)
