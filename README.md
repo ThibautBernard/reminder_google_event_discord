@@ -5,7 +5,6 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 <br>*Five minutes before the meeting, the bot send a discord message to all that say that the meeting will start soon, and send another message when the meeting start with the link of it, pratical to remember.*
 <br>We can show also all the meeting of the current day with one command and print the price of cryptocurrencies(BTC, ETH...).
 
-
 ### :star: Used 
 * Api discord
 * Asynchronous
@@ -41,10 +40,10 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
   * Update [**commands file**](https://github.com/ThibautBernard/discord_bot/blob/master/config_bot/commands) with the name of the crypto as bitcoin in 'COMMANDS=' and 'CRYPTO='.
   * Create a new file in folder *cryptocurrencies*, copy and paste as example the bitcoin.py file and update the class name, the super().__init__("!your_crypto") and update the message return as you want. 
   * To finish, update the commands.py file, import you new file created as ``from models.cryptocurrency.name_file import class_name`` and add you new crypto in the dictionnary 'crypto_obj'.
-  
+ #### Create a new event in google calendar to test
+  * Open https://calendar.google.com and log you in with the account that you use at the step 5
+  * Now create a new event in your calendar and it will give you informations in your console 
 ### Files
- * config is the config file
-    * You can add more crypto
  * bot.py is the main file to start the bot
     * Use asynchronous and listening event from discord API
 ### Commands
