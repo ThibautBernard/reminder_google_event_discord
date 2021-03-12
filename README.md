@@ -31,7 +31,7 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 * 10 - Open the file crypto in models/cryptocurrencies/crypto.py and paste your api key in *api_key = "your_api_key"*
 * You finally good, congratz.
 ### :star: Usage 
-* start the bot ``python3 bot.p``
+* start the bot ``python3 bot.py``
 ### :electric_plug: Informations
  #### Add a new crypto 
   * First, make sure that api handle the crypto. 
