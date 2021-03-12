@@ -32,7 +32,19 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
 * You finally good, congratz.
 ### :star: Usage 
 * start the bot ``python3 bot.p``
-
+### :electric_plug: Informations
+ #### Add a new crypto 
+  * First, make sure that api handle the crypto. 
+  * Update the config file with the name of the crypto as bitcoin in 'COMMANDS=' and 'CRYPTO='.
+  * Create a new file in folder *cryptocurrencies*, copy and paste as example the bitcoin.py file and update the class name, the super().__init__("!your_crypto") and update the message return as you want. 
+  * To finish, update the commands.py file, import you new file created as ``from models.cryptocurrency.name_file import class_name`` and add you new crypto in the dictionnary 'crypto_obj'.
+  
+ #### Add a new command
+### Files
+ * config is the config file
+    * You can add more crypto
+ * bot.py is the main file to start the bot
+    * Use asynchronous and listening event from discord API
 ### Commands
 * !BTC (print the price of the bitcoin)
 * !{whatever you type} (print a list of the current list commands you can use)
