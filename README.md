@@ -45,6 +45,8 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
   * Now create a new event in your calendar
   * Add a new title
   * Add the link of your zoom meeting in *'add location'*
+  * Type in your discord channel "!reunion" to see if your new event has been added
+  * You can also check you console, it will tell you when the event will start if it's in 10 minutes max
   * That's it.
 ### Files
  * bot.py is the main file to start the bot
