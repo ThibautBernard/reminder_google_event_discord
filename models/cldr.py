@@ -12,7 +12,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="../config")
+load_dotenv(dotenv_path="../config_bot/config")
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 CREDENTIALS_FILE = '../credentials.json'
@@ -139,6 +139,4 @@ class Calendar:
             if len(tmp) > 0 and tmp:
                 if events_result['items'][0]:
                     for i in range(len(events_result['items'])):
-                        #if events_result['items'][i]['summary'] in self.import_meetings_list:
-                        print(">{}".format(events_result['items'][i]['summary']))
                         self.info_event = events_result['items'][i]

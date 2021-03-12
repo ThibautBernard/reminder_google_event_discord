@@ -13,7 +13,7 @@ class Crypto:
     """
     Parent class to all crypto
     """
-    api_key = ""
+    api_key = "4af0b729cf05fe8c5c94c9c11a3ade90"
     def __init__(self, crypto_n, currency):
         """
         crypto_n: name of the crypto wanted

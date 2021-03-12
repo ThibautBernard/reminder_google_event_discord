@@ -8,7 +8,7 @@ import requests
 import json
 import datetime
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="../config")
+load_dotenv(dotenv_path="../config_bot/config")
 from models.cryptocurrency.bitcoin import Bitcoin
 from models.cldr import Calendar
 from models.cryptocurrency.etherum import Etherum
@@ -22,17 +22,12 @@ class Commands:
     def __init__(self, list_messages_send):
         """
         list_messages_send: msg send by the user in a list
+        separed by space
         """
         self.msg_list = list_messages_send
         self.commands = json.loads(os.getenv("COMMANDS"))
-        self.msg_to_respond = json.loads(os.getenv("MSG_RESPONDS"))
         self.list_cmd_crypto = json.loads(os.getenv("CRYPTO"))
         self.error_cmd_msg = os.getenv("ERROR_COMMANDS")
-
-    def parse_cmd_list(self, to_find):
-        """ Parse the list to return the msg to the cmd """
-        idx = self.commands.index(to_find)
-        return self.msg_to_respond[idx]
 
     def is_cmd_crypto(self, cmd):
         """ Check if the command is a cmd crypto"""
@@ -41,7 +36,7 @@ class Commands:
         return False
 
     def is_other_cmd(self, cmd):
-        """Check in dictionnary if the cmd given exist"""
+        """Check in dictionnary specific command if the cmd given exist"""
         for key in self.other_cmd.keys():
             if key == cmd:
                 return True
@@ -57,7 +52,7 @@ class Commands:
                 if str_to_print and len(str_to_print) > 0:
                     return str_to_print
                 else:
-                    return "Pas de réunion de prévu"
+                    return "No reunion"
 
     def msg_crypto(self):
         for i in self.crypto_obj.keys():
@@ -68,9 +63,7 @@ class Commands:
     def message_to_respond(self):
         """ return the msg to the cmd"""
         if self.is_command(self.msg_list[0]):
-            if self.has_msg_to_respond(self.msg_list[0]):
-                return self.parse_cmd_list(self.msg_list[0])
-            elif self.is_cmd_crypto(self.msg_list[0][1:]):
+            if self.is_cmd_crypto(self.msg_list[0][1:]):
                 return self.msg_crypto()
             elif self.is_other_cmd(self.msg_list[0]):
                 return self.msg_other_cmd(self.msg_list[0])
@@ -83,10 +76,10 @@ class Commands:
             return True
         return False
 
-    def has_msg_to_respond(self, cmd_to_check):
-        """Check if the command has a msg to return """
-        idx = self.commands.index(cmd_to_check)
-        for index, i in enumerate(self.msg_to_respond):
-            if index == idx:
-                return True
-        return False
+    #def has_msg_to_respond(self, cmd_to_check):
+    #    """Check if the command has a msg to return """
+    #    idx = self.commands.index(cmd_to_check)
+    #    for index, i in enumerate(self.msg_to_respond):
+    #        if index == idx:
+    #            return True
+    #    return False

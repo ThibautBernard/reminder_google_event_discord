@@ -10,7 +10,9 @@ import json
 import datetime
 import time
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="config")
+load_dotenv(dotenv_path="config_bot/config")
+load_dotenv(dotenv_path="config_bot/commands")
+
 from models.cldr import Calendar
 from models.commands import Commands
 import asyncio
@@ -20,13 +22,12 @@ from time import strftime
 
 class MyClient(discord.Client):
     identifier_cmd = "!"
-    id_main_channel = put_the_id_here
+    id_main_channel = json.loads(os.getenv("ID_CHANNEL_TO_SEND_REMINDER_MSG"))
 
     def __init__(self):
         super().__init__()
         self.main_channel = None
         self.commands = json.loads(os.getenv("COMMANDS"))
-        self.msg_to_respond = json.loads(os.getenv("MSG_RESPONDS"))
         self.reunion_date = 0
         self.name_reunion = ""
         self.link_event = None
@@ -44,7 +45,12 @@ class MyClient(discord.Client):
         self.name_reunion = c.name_event
         if c.info_event and c.link_event:
             self.link_event = c.link_event
-        print(self.reunion_date)
+        if self.reunion_date == 0:
+            print("No event soon (last 10 minutes)")
+        elif self.reunion_date < 0:
+            print("Meeting '{}' has started since {:.2f} seconds".format(self.name_reunion, self.reunion_date))
+        else:
+            print("Meeting '{}' in {:.2f} seconds".format(self.name_reunion, self.reunion_date))
         await asyncio.sleep(3)
 
     async def check_reunion_is_soon(self):
@@ -52,12 +58,11 @@ class MyClient(discord.Client):
         if yes, send a msg to the main channel
         and sleep the time of the event to start"""
         if self.reunion_date and self.name_reunion and self.reunion_date > 60 and self.reunion_date < 300:
-            await self.send_channel_msg("{} va commencer dans moins de : {} ({})".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date))), self.link_event))
+            await self.send_channel_msg("{} will start in  : {} ({})".format(self.name_reunion, strftime("%M:%S", gmtime(int(self.reunion_date))), self.link_event))
             await asyncio.sleep(self.reunion_date)
         elif self.reunion_date and self.name_reunion and self.reunion_date >= -60 and self.reunion_date <= 0:
-            await self.send_channel_msg("@everyone {} commence actuellement, c'est l'heure !!".format(self.name_reunion))
+            await self.send_channel_msg("@everyone {} has started, it's time !!".format(self.name_reunion))
             await asyncio.sleep(60)
-
         await asyncio.sleep(3)
 
     async def on_ready(self):
@@ -74,11 +79,6 @@ class MyClient(discord.Client):
     async def send_channel_msg(self, msg):
         """msg to the main channel"""
         await self.main_channel.send(msg)
-
-    async def on_member_join(self, member):
-        """ When somebody join the discord """
-        await member.create_dm()
-        await member.dm_channel.send(f'Salut {member.name}, merci d\'avoir rejoins le discord ;) !')
 
     async def on_message(self, message):
         """ When someone send a message in the discord """
