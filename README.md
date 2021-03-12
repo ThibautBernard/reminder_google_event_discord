@@ -30,6 +30,9 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
   * Right-click on a channel and copy the id of this one
 * 10 - Open the file crypto in models/cryptocurrencies/crypto.py and paste your api key in *api_key = "your_api_key"*
 * You finally good, congratz.
+* Now start the bot ``python3 bot.py``
+* Notice : a window will open that ask you to log you in at your google account, choose the google account that you use before and accept everything after until that you have this *The authentication flow has completed. You may close this window.* 
+* Your bot is working now.
 ### :star: Usage 
 * start the bot ``python3 bot.py``
 ### :electric_plug: Informations
