@@ -33,6 +33,7 @@ The purpose of this bot was to **create a reminder for event (Zoom)** created in
   * Notice : a window will open that ask you to log you in at your google account, choose the google account that you use before and accept everything after until that you have this *The authentication flow has completed. You may close this window.* 
 * Your bot is working now.
 * https://stackoverflow.com/questions/41328451/ssl-module-in-python-is-not-available-when-installing-package-with-pip3
+* SSL certificat https://stackoverflow.com/questions/35569042/ssl-certificate-verify-failed-with-python3
 ### :star: Usage 
 * start the bot ``python3 bot.py``
 ### :electric_plug: Informations
