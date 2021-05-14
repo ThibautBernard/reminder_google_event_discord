@@ -1,5 +1,3 @@
-
-#import crypto
 from models.cryptocurrency.crypto import Crypto
 
 class Cro(Crypto):

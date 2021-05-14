@@ -3,10 +3,8 @@
     Main class to all cryptocurrencies
 """
 import os
-import discord
 import requests
 import json
-import datetime
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="../../config")
 class Crypto:
@@ -27,19 +25,23 @@ class Crypto:
 
     @property
     def currency(self):
-        return self.__currency
+        """ getter of property currency """
+        return self.currency
 
     @currency.setter
     def currency(self, value):
-        self.__currency = value
+        """ setter of property currency """
+        self.currency = value
 
     @property
     def crypto_name(self):
-        return self.__crypto_name
+        """ getter of property crypto_name """
+        return self.crypto_name
 
     @crypto_name.setter
     def crypto_name(self, value):
         """
+        Setter of property crypto_name
         Check if the crypto wanted is
         in the list of currency avalaible
         If yes, assigne the value
@@ -47,7 +49,7 @@ class Crypto:
         """
         crypto_list = json.loads(os.getenv("CRYPTO"))
         if value[1:] in crypto_list:
-            self.__crypto_name = value[1:]
+            self.crypto_name = value[1:]
         else:
             return None
 

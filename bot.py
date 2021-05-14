@@ -5,10 +5,7 @@
 """
 import os
 import discord
-import requests
 import json
-import datetime
-import time
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="config_bot/config")
 load_dotenv(dotenv_path="config_bot/commands")

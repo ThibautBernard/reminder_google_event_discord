@@ -3,10 +3,7 @@
     Class Commands that handle commands request by the user
 """
 import os
-import discord
-import requests
 import json
-import datetime
 from dotenv import load_dotenv
 load_dotenv(dotenv_path="../config_bot/config")
 from models.cryptocurrency.bitcoin import Bitcoin
@@ -17,7 +14,6 @@ from models.cryptocurrency.doge import Doge
 
 class Commands:
     crypto_obj = {'BTC': Bitcoin, 'ETH': Etherum, 'CRO': Cro, 'DOGE': Doge}
-    other_cmd = {'!reunion': Calendar}
 
     def __init__(self, list_messages_send):
         """
@@ -35,38 +31,20 @@ class Commands:
             return True
         return False
 
-    def is_other_cmd(self, cmd):
-        """Check in dictionnary specific command if the cmd given exist"""
-        for key in self.other_cmd.keys():
-            if key == cmd:
-                return True
-        return False
-
-    def msg_other_cmd(self, cmd):
-        """ Return the msg of other cmd for the cmd given"""
-        for key in self.other_cmd.keys():
-            if key == cmd:
-                calendar = self.other_cmd[key]()
-                calendar.launch()
-                str_to_print = calendar.get_all_event()
-                if str_to_print and len(str_to_print) > 0:
-                    return str_to_print
-                else:
-                    return "No reunion"
-
     def msg_crypto(self):
+        """ return the message price """
         for i in self.crypto_obj.keys():
             if i == self.msg_list[0][1:]:
                 instance = self.crypto_obj[i]('EUR')
                 return instance.message_price()
     
     def message_to_respond(self):
-        """ return the msg to the cmd"""
+        """ return the correct msg for the cmd given
+            otherwise return specifc error message
+        """
         if self.is_command(self.msg_list[0]):
             if self.is_cmd_crypto(self.msg_list[0][1:]):
                 return self.msg_crypto()
-            elif self.is_other_cmd(self.msg_list[0]):
-                return self.msg_other_cmd(self.msg_list[0])
         else:
             return self.error_cmd_msg
 
@@ -75,11 +53,3 @@ class Commands:
         if cmd_to_check in self.commands:
             return True
         return False
-
-    #def has_msg_to_respond(self, cmd_to_check):
-    #    """Check if the command has a msg to return """
-    #    idx = self.commands.index(cmd_to_check)
-    #    for index, i in enumerate(self.msg_to_respond):
-    #        if index == idx:
-    #            return True
-    #    return False

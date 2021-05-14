@@ -1,5 +1,4 @@
 from models.cryptocurrency.crypto import Crypto
-#import crypto
 class Bitcoin(Crypto):
     def __init__(self, currency_name):
         super().__init__("!BTC", currency_name)

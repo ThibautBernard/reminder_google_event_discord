@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
     Class calendar that call api google calendar
-    and retrieve informations about event
+    and retrieve informations about one recent event or
+    all event
 """
 from __future__ import print_function
 import pickle
-import json
 import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -21,7 +21,9 @@ CREDENTIALS_FILE = '../credentials.json'
 class Calendar:
 
     def __init__(self):
-        #self.creds = None
+        """
+        info_event: all informations return by the api google calendar
+        """
         self.service = None
         self.setup()
         self.reunion_name = 0
@@ -32,7 +34,6 @@ class Calendar:
         self.name_event = None
         self.seconds_event = 0
         self.link_event = None
-        #self.import_meetings_list = json.loads(os.getenv("IMP_MEETINGS"))
 
     def setup(self):
         """ 
@@ -58,7 +59,7 @@ class Calendar:
         self.service = build('calendar', 'v3', credentials=creds)
 
     def get_date_event(self):
-        """Get the date time to the last event"""
+        """Set the datetime for the last event to a specific format"""
         if self.info_event:
             tmp = self.info_event['start']['dateTime']
             format = "%Y-%m-%dT%H:%M:%S%z"
@@ -66,7 +67,7 @@ class Calendar:
             self.date_event = datetime.strptime(tmp_date_env, "%d-%H:%M:%S") 
 
     def get_date_now(self):
-        """Get the date now to the good format"""
+        """Set the date now to the correct format"""
         date_now = datetime.now()
         format = "%Y-%m-%dT%H:%M:%S%z"
         date_now_str = date_now.strftime(format)
@@ -74,69 +75,44 @@ class Calendar:
         self.date_now = datetime.strptime(date_now_transform, "%d-%H:%M:%S")
 
     def get_second_rest_event(self):
-        """Return the secondes before/after the event """
+        """Set the secondes rest before the event to start"""
         self.get_date_now()
         self.get_date_event()
         if self.date_event and self.date_now:
             self.seconds_event = (self.date_event - self.date_now).total_seconds()
 
     def get_name_event(self):
-        """ Store if an event exist the name of this event"""
+        """ Set the name of the event if exist"""
         if self.info_event:
             self.name_event = self.info_event['summary']
             if 'location' in self.info_event:
                 self.link_event = self.info_event['location']
 
     def launch(self):
-        """ Call different function needed"""
+        """ Call methods to make the request """
         self.get_last_event()
         self.get_date_now()
         self.get_date_event()
         self.get_name_event()
         self.get_second_rest_event()
 
-    def get_all_event(self):
-        s = ""
-        date_min = datetime.today()
-        date_min = date_min.replace(hour=8, minute=30)
-        date_min = date_min.isoformat() + 'Z'
-
-        date_max = datetime.today()
-        date_max = date_max.replace(hour=22, minute=30)
-        date_max = date_max.isoformat() + 'Z'
-        events_result = self.service.events().list(
-                                    calendarId='primary', timeMin=date_min, timeMax=date_max,
-                                    singleEvents=True,
-                                    orderBy='startTime').execute()
-        for i in range(len(events_result['items'])):
-            for y in events_result['items'][i]:
-                if y == "summary":
-                    s = s + events_result['items'][i][y] + " à "
-                if y == "start":
-                    format = "%Y-%m-%dT%H:%M:%S%z"
-                    tmp_date = datetime.strptime(events_result['items'][i][y]['dateTime'], format).strftime('%H:%M:%S')
-                    s = s + tmp_date + "\n"
-
-        return s
-
     def get_last_event(self):
         """Call api and store if exist
         the informations about the last event that coming
         in the max_minutes
-        Events_result: dict of list
-        Events_result['items']: list
+        Event_result: dict of list
+        Event_result['items']: list
         """
         now = datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
         max_minutes = datetime.utcnow() + timedelta(minutes = 10)
         max_minutes = max_minutes.isoformat() + 'Z'
-        events_result = self.service.events().list(
+        event_result = self.service.events().list(
                                     calendarId='primary', timeMin=now, 
-                                    timeMax=max_minutes, maxResults=2, 
+                                    timeMax=max_minutes, maxResults=1, 
                                     singleEvents=True,
                                     orderBy='startTime').execute()
-        if events_result:
-            tmp = events_result['items']
+        if event_result:
+            tmp = event_result['items']
             if len(tmp) > 0 and tmp:
-                if events_result['items'][0]:
-                    for i in range(len(events_result['items'])):
-                        self.info_event = events_result['items'][i]
+                if event_result['items'][0]:
+                    self.info_event = event_result['items'][0]
