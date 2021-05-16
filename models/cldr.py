@@ -26,7 +26,7 @@ class Calendar:
         """
         self.service = None
         self.setup()
-        self.reunion_name = 0
+        self.reunion_name = None
         self.info_event = None
         self.date_now = None
         self.get_date_now()
