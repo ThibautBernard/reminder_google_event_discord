@@ -11,7 +11,7 @@ class Crypto:
     """
     Parent class to all crypto
     """
-    api_key = "4af0b729cf05fe8c5c94c9c11a3ade90"
+    api_key = "api_key"
     def __init__(self, crypto_n, currency):
         """
         crypto_n: name of the crypto wanted
@@ -19,24 +19,24 @@ class Crypto:
         """
         self.currency = currency
         self.crypto_name = crypto_n
-        self.content = requests.get(f"https://api.nomics.com/v1/currencies/ticker?key={self.api_key}&ids={self.crypto_name}&interval=1d,30d&convert=EUR&per-page=100&page=1")
+        self.content = requests.get(f"https://api.nomics.com/v1/currencies/ticker?key={self.api_key}&ids={self.__crypto_name}&interval=1d,30d&convert=EUR&per-page=100&page=1")
         self.price = 0
         self.hours = None
 
     @property
     def currency(self):
         """ getter of property currency """
-        return self.currency
+        return self.__currency
 
     @currency.setter
     def currency(self, value):
         """ setter of property currency """
-        self.currency = value
+        self.__currency = value
 
     @property
     def crypto_name(self):
         """ getter of property crypto_name """
-        return self.crypto_name
+        return self.__crypto_name
 
     @crypto_name.setter
     def crypto_name(self, value):
@@ -49,7 +49,7 @@ class Crypto:
         """
         crypto_list = json.loads(os.getenv("CRYPTO"))
         if value[1:] in crypto_list:
-            self.crypto_name = value[1:]
+            self.__crypto_name = value[1:]
         else:
             return None
 
